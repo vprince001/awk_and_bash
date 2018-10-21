@@ -1,0 +1,41 @@
+#! /usr/bin/awk -f
+BEGIN{
+  sum1=0
+  sum2=0
+  sum3=0
+  sum4=0
+  sum5=0
+  sum6=0
+  sum7=0
+  sum8=0
+  sum9=0
+  sum10=0
+}
+{
+sum1=sum1+substr($0,91)
+sum2=sum2+substr($0,81,10)
+sum3=sum3+substr($0,71,10)
+sum4=sum4+substr($0,61,10)
+sum5=sum5+substr($0,51,10)
+sum6=sum6+substr($0,41,10)
+sum7=sum7+substr($0,31,10)
+sum8=sum8+substr($0,21,10)
+sum9=sum9+substr($0,11,10)
+sum10=sum10+substr($0,1,10)
+}
+
+END{
+  {
+  field1=substr(sum1,3)
+  field2=sum2+substr(sum1,1,2)
+  field3=sum3+substr(field2,1,2)
+  field4=sum4+substr(field3,1,2)
+  field5=sum5+substr(field4,1,2)
+  field6=sum6+substr(field5,1,2)
+  field7=sum7+substr(field6,1,2)
+  field8=sum8+substr(field7,1,2)
+  field9=sum9+substr(field8,1,2)
+  field10=sum10+substr(field9,1,2)
+  }
+  print field10 substr(field9,3) substr(field8,3) substr(field7,3) substr(field6,3) substr(field5,3) substr(field4,3) substr(field3,3) substr(field2,3) field1
+}
